@@ -1,10 +1,17 @@
 [application]
 
-config/name="Pong"
-config/version="0.1.0"
+config/version="1.0"
 run/main_scene="res://main.tscn"
 
 [display]
 
 window/size/viewport_width=800
 window/size/viewport_height=600
+
+[rendering]
+
+renderer/rendering_method="forward_plus"
+
+[config]
+
+features=PackedStringArray( "GodotSharp" )
