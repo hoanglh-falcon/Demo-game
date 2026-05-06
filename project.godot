@@ -1,0 +1,7 @@
+[application]
+config/name="Pong Core"
+run/main_scene="res://main.tscn"
+
+[display]
+window/size/viewport_width=800
+window/size/viewport_height=600

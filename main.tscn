@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://ball.gd" id="1_ball"]
+[ext_resource type="Script" path="res://paddle.gd" id="2_paddle"]
+[ext_resource type="Script" path="res://score.gd" id="3_score"]
+
+[sub_resource type="RectangleShape2D" id="RectShape"]
+size = Vector2(20, 100)
+
+[sub_resource type="RectangleShape2D" id="BallShape"]
+size = Vector2(20, 20)
+
+[node name="Main" type="Node2D"]
+
+[node name="Ball" type="CharacterBody2D" parent="."]
+script = ExtResource("1_ball")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("BallShape")
+
+[node name="PaddleLeft" type="CharacterBody2D" parent="."]
+script = ExtResource("2_paddle")
+position = Vector2(-380, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PaddleLeft"]
+shape = SubResource("RectShape")
+
+[node name="PaddleRight" type="CharacterBody2D" parent="."]
+script = ExtResource("2_paddle")
+position = Vector2(380, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PaddleRight"]
+shape = SubResource("RectShape")
+
+[node name="Score" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Score"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelPlayer" type="Label" parent="Score/VBoxContainer"]
+text = "Player: 0"
+
+[node name="LabelAI" type="Label" parent="Score/VBoxContainer"]
+text = "AI: 0"
+
+[node name="ScoreScript" type="Control" parent="Score"]
+script = ExtResource("3_score")
+
+[node name="LabelPlayer" type="Label" parent="Score/ScoreScript"]
+# Placeholder for export reference
