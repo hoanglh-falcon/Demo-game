@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Script" path="res://Main.cs" id=1]
+[node name="Main" type="Node2D"]
+position = Vector2( 0, 0 )
+script = ExtResource( 1 )
+[node name="Gameplay" type="Node2D" parent="."]
+position = Vector2( 0, 0 )
+[node name="Ball" type="Node2D" parent="Gameplay"]
+position = Vector2( 0, 0 )
+[node name="PaddleLeft" type="Node2D" parent="Gameplay"]
+position = Vector2( 0, 0 )
+[node name="PaddleRight" type="Node2D" parent="Gameplay"]
+position = Vector2( 0, 0 )
+[node name="UI" type="Node2D" parent="."]
+position = Vector2( 0, 0 )
+[node name="ScoreDisplay" type="Node2D" parent="UI"]
+position = Vector2( 0, 0 )
