@@ -1,16 +1,94 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://kanbanforge_pong"]
 
-[ext_resource path="res://Paddle.cs" type="Script" id=1]
-[ext_resource path="res://Ball.cs" type="Script" id=2]
-[ext_resource path="res://Score.cs" type="Script" id=3]
+[ext_resource type="Script" path="res://Paddle.cs" id="1_paddle"]
+[ext_resource type="Script" path="res://Ball.cs" id="2_ball"]
+[ext_resource type="Script" path="res://Score.cs" id="3_score"]
 
-[node name="Game" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="paddle_shape"]
+size = Vector2(18, 100)
 
-[node name="Paddle" type="CharacterBody2D" parent="."]
-script = ExtResource(1)
+[sub_resource type="RectangleShape2D" id="ball_shape"]
+size = Vector2(18, 18)
+
+[sub_resource type="RectangleShape2D" id="wall_shape"]
+size = Vector2(800, 10)
+
+[node name="Main" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(400, 300)
+
+[node name="PaddleLeft" type="CharacterBody2D" parent="."]
+position = Vector2(60, 300)
+script = ExtResource("1_paddle")
+
+[node name="Visual" type="ColorRect" parent="PaddleLeft"]
+offset_left = -9
+offset_top = -50
+offset_right = 9
+offset_bottom = 50
+color = Color(1, 1, 1, 1)
+
+[node name="Hitbox" type="CollisionShape2D" parent="PaddleLeft"]
+shape = SubResource("paddle_shape")
+
+[node name="PaddleRight" type="CharacterBody2D" parent="."]
+position = Vector2(740, 300)
+script = ExtResource("1_paddle")
+
+[node name="Visual" type="ColorRect" parent="PaddleRight"]
+offset_left = -9
+offset_top = -50
+offset_right = 9
+offset_bottom = 50
+color = Color(1, 1, 1, 1)
+
+[node name="Hitbox" type="CollisionShape2D" parent="PaddleRight"]
+shape = SubResource("paddle_shape")
 
 [node name="Ball" type="CharacterBody2D" parent="."]
-script = ExtResource(2)
+position = Vector2(400, 300)
+script = ExtResource("2_ball")
+
+[node name="Visual" type="ColorRect" parent="Ball"]
+offset_left = -9
+offset_top = -9
+offset_right = 9
+offset_bottom = 9
+color = Color(1, 1, 1, 1)
+
+[node name="Hitbox" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("ball_shape")
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+position = Vector2(400, 5)
+
+[node name="Visual" type="ColorRect" parent="TopWall"]
+offset_left = -400
+offset_top = -5
+offset_right = 400
+offset_bottom = 5
+color = Color(1, 1, 1, 1)
+
+[node name="Hitbox" type="CollisionShape2D" parent="TopWall"]
+shape = SubResource("wall_shape")
+
+[node name="BottomWall" type="StaticBody2D" parent="."]
+position = Vector2(400, 595)
+
+[node name="Visual" type="ColorRect" parent="BottomWall"]
+offset_left = -400
+offset_top = -5
+offset_right = 400
+offset_bottom = 5
+color = Color(1, 1, 1, 1)
+
+[node name="Hitbox" type="CollisionShape2D" parent="BottomWall"]
+shape = SubResource("wall_shape")
 
 [node name="Score" type="Label" parent="."]
-script = ExtResource(3)
+position = Vector2(350, 30)
+size = Vector2(100, 40)
+text = "0 - 0"
+horizontal_alignment = 1
+script = ExtResource("3_score")
